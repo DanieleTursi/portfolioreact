@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { useNavigate } from "react-router-dom";
 
 const Home=()=>{
-  const PLinks=['<Links>','</Links>']
+  const PLinks=['<ul>','</ul>']
   const navigate=useNavigate()
   const navigateToAboutme=()=>{
     navigate('./aboutme')
@@ -23,7 +23,7 @@ const Home=()=>{
         <Links onClick={navigateToAboutme}> {PLinks[0]} <a>ABOUT ME</a> {PLinks[1]}</Links>
         <Links onClick={navigateToSkills}> {PLinks[0]} <a>SKILLS</a> {PLinks[1]}</Links>
         <Links onClick={navigateToProjects}> {PLinks[0]} <a>PROJECTS</a> {PLinks[1]}</Links>
-        <Links onClick={navigateToContacts}> {PLinks[0]} <a>CONTACTS</a> {PLinks[1]}</Links>
+        <Links onClick={navigateToContacts}> {PLinks[0]} <a>CONTACT</a> {PLinks[1]}</Links>
         </WrapLinks>
         {/* <LinksText>Const Portfolio = styled.div`</LinksText>
         <LinksText2>  color : white;</LinksText2>
@@ -54,14 +54,17 @@ const WrapLinks=styled.div`
 const Links = styled.div`
      font-size:1.5vw;
      color:white;
+     
 
      a{
      cursor:pointer;
      font-weight:bold;
      font-size:3vw;
+     transition: text-shadow 0.5s,color 0.5s;
 
      &:hover{
       text-shadow:0 0 10px white;
+      color:red;
      }
      }
 

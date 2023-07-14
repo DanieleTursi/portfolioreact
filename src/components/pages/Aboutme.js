@@ -29,8 +29,8 @@ const MainWrap=styled.div`
    font-family: Monaco;
    display:flex;
    flex-direction: row;
-   ${'' /* justify-content:center;
-   align-items:center; */}
+   justify-content:center;
+   align-items:center;
    span{
         font-size:1.9vw;
         padding:0 30px;
@@ -48,12 +48,11 @@ const Wrap=styled.div`
    height:23vw;
    display:flex;
    align-items:flex-start;
-   margin: 20% 2%;;
+   margin: 0 2%;
    
-
    @media screen and (max-width: 768px){
       height:47vh;
-      margin:40% 2%;
+      margin: 0 2%;
     }
   
 

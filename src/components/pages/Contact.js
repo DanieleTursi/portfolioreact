@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar.js/Navbar";
 
-const Contacts =()=>{
+const Contact =()=>{
     const navigate=useNavigate();
 
     return(
@@ -15,7 +15,7 @@ const Contacts =()=>{
     )
 }
 
-export default Contacts
+export default Contact
 
 const MainWrap=styled.div`
    width:100vw;
