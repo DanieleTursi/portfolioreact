@@ -31,7 +31,7 @@ const Navbar=()=>{
         <Links onClick={() => navigateTo("/aboutme")} active={activeLink === "/aboutme"} >about me</Links>
         <Links onClick={() => navigateTo("/skills")} active={activeLink === "/skills"}>skills</Links>
         <Links onClick={() => navigateTo("/projects")} active={activeLink === "/projects"}>projects</Links>
-        <Links onClick={() => navigateTo("/contact")} active={activeLink === "/contact"}>contacts</Links>
+        <Links onClick={() => navigateTo("/contact")} active={activeLink === "/contact"}>contact</Links>
         </MainWrap>
     )
 }

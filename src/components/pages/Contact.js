@@ -9,7 +9,7 @@ const Contact =()=>{
     return(
      <MainWrap>
         <Navbar/>
-        <h1>CONTACTS</h1>
+        <h1>CONTACT</h1>
      </MainWrap>
 
     )
