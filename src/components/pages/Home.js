@@ -5,25 +5,16 @@ import { useNavigate } from "react-router-dom";
 const Home=()=>{
   const PLinks=['<ul>','</ul>']
   const navigate=useNavigate()
-  const navigateToAboutme=()=>{
-    navigate('./aboutme')
-  }
-  const navigateToSkills=()=>{
-    navigate('./skills')
-  }
-  const navigateToProjects=()=>{
-    navigate('./projects')
-  }
-  const navigateToContacts=()=>{
-    navigate('./contacts')
-  }
+  const navigateTo = (path) => {
+    navigate(path);
+  };
     return(
       <MainWrap>
        <WrapLinks>
-        <Links onClick={navigateToAboutme}> {PLinks[0]} <a>ABOUT ME</a> {PLinks[1]}</Links>
-        <Links onClick={navigateToSkills}> {PLinks[0]} <a>SKILLS</a> {PLinks[1]}</Links>
-        <Links onClick={navigateToProjects}> {PLinks[0]} <a>PROJECTS</a> {PLinks[1]}</Links>
-        <Links onClick={navigateToContacts}> {PLinks[0]} <a>CONTACT</a> {PLinks[1]}</Links>
+        <Links onClick={() => navigateTo("/aboutme")}> {PLinks[0]} <a>ABOUT ME</a> {PLinks[1]}</Links>
+        <Links onClick={() => navigateTo("/skills")}> {PLinks[0]} <a>SKILLS</a> {PLinks[1]}</Links>
+        <Links onClick={() => navigateTo("/projects")}> {PLinks[0]} <a>PROJECTS</a> {PLinks[1]}</Links>
+        <Links onClick={() => navigateTo("/contact")}> {PLinks[0]} <a>CONTACT</a> {PLinks[1]}</Links>
         </WrapLinks>
         {/* <LinksText>Const Portfolio = styled.div`</LinksText>
         <LinksText2>  color : white;</LinksText2>
