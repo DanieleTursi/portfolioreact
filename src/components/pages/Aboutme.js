@@ -45,7 +45,7 @@ const MainWrap=styled.div`
 `
 
 const Wrap=styled.div`
-   height:23vw;
+   height:auto;
    display:flex;
    align-items:flex-start;
    margin: 0 2%;
@@ -62,6 +62,7 @@ const Link = styled.div`
      font-size:1.5vw;
      color:white;
      cursor:pointer;
+
      @media screen and (max-width: 768px){
       font-size:1.5vh;
     }

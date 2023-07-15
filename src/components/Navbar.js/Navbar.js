@@ -1,29 +1,19 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import styled, { keyframes } from "styled-components"
 import { useNavigate } from "react-router-dom";
 
 const Navbar=()=>{
     const [activeLink, setActiveLink] = useState("");
     const navigate=useNavigate()
+    
     const navigateTo = (path) => {
-        setActiveLink(path);
-        navigate(path);
-      };
-    // const navigateToHome=()=>{
-    //     navigate('/')
-    // }
-    // const navigateToAboutme=()=>{
-    //   navigate('/aboutme')
-    // }
-    // const navigateToSkills=()=>{
-    //   navigate('/skills')
-    // }
-    // const navigateToProjects=()=>{
-    //   navigate('/projects')
-    // }
-    // const navigateToContacts=()=>{
-    //   navigate('/contacts')
-    // }
+      navigate(path);
+    };
+  
+    useEffect(() => {
+      setActiveLink(window.location.pathname);
+    }, []);
+      
 
     return(
         <MainWrap>
@@ -86,7 +76,7 @@ const Links = styled.div`
   }
 
      @media screen and (max-width: 768px){
-        font-size:3vw;
+        font-size:4vw;
         padding-right:10px;
     }  
 `
