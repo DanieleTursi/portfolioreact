@@ -5,7 +5,7 @@ import Navbar from "../Navbar.js/Navbar";
 
 const Aboutme =()=>{
     const navigate=useNavigate();
-    const par=['function Aboutme(){ alert("','")};']
+    const par=['function Aboutme() { alert("','")};']
 
     return(
      <MainWrap>

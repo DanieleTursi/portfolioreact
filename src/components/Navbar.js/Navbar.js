@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from "react";
 import styled, { keyframes } from "styled-components"
 import { useNavigate } from "react-router-dom";
-import { GiHamburgerMenu } from 'react-icons/gi';
+import { RxHamburgerMenu } from 'react-icons/rx';
+import {IoMdClose} from 'react-icons/io';
 
 const Navbar=()=>{
     const [isMobile, setIsMobile] = useState(false)
@@ -43,7 +44,9 @@ const Navbar=()=>{
             <Links onClick={() => navigateTo("/contact")} active={activeLink === "/contact"}>contact</Links>
           </MainWrap>
         : <MainWrap>
-            <GiHamburgerMenu onClick={()=>setHambOpen(!hambOpen)}style={style}/>
+           { !hambOpen
+            ? <RxHamburgerMenu onClick={()=>setHambOpen(!hambOpen)} style={style}/>
+            : <IoMdClose onClick={()=>setHambOpen(!hambOpen)} style={style}/>}
              {hambOpen
              ?<NavbarMobile>
                 <Links onClick={() => navigateTo("/")} active={activeLink === "/"}>home</Links>
