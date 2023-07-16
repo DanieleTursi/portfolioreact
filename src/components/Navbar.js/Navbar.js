@@ -9,6 +9,7 @@ const Navbar=()=>{
     const [activeLink, setActiveLink] = useState("");
     const style = { color: "white", marginRight: "15px", fontSize: "30px" }
     const navigate=useNavigate()
+
     const handleResize = () => {
       if (window.innerWidth < 720) {
           setIsMobile(true)
@@ -27,6 +28,7 @@ const Navbar=()=>{
     };
   
     useEffect(() => {
+      handleResize();
       setActiveLink(window.location.pathname);
     }, []);
       
