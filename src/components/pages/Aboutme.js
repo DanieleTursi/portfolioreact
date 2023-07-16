@@ -5,7 +5,7 @@ import Navbar from "../Navbar.js/Navbar";
 
 const Aboutme =()=>{
     const navigate=useNavigate();
-    const par=['alert("','")']
+    const par=['function Aboutme(){ alert("','")};']
 
     return(
      <MainWrap>
@@ -47,6 +47,7 @@ const MainWrap=styled.div`
 const Wrap=styled.div`
    height:auto;
    display:flex;
+   flex-direction:column;
    align-items:flex-start;
    margin: 0 2%;
    
@@ -62,6 +63,7 @@ const Link = styled.div`
      font-size:1.5vw;
      color:white;
      cursor:pointer;
+     margin-bottom:20px;
 
      @media screen and (max-width: 768px){
       font-size:1.5vh;
@@ -73,6 +75,7 @@ const LinkTwo = styled.div`
      color:white;
      cursor:pointer;
      align-self:flex-end;
+     margin-top:20px;
 
      @media screen and (max-width: 768px){
       font-size:1.5vh;

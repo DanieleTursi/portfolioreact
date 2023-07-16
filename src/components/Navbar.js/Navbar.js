@@ -1,10 +1,26 @@
 import React,{useState,useEffect} from "react";
 import styled, { keyframes } from "styled-components"
 import { useNavigate } from "react-router-dom";
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 const Navbar=()=>{
+    const [isMobile, setIsMobile] = useState(false)
+    const [hambOpen,setHambOpen]=useState(false)
     const [activeLink, setActiveLink] = useState("");
+    const style = { color: "white", marginRight: "15px", fontSize: "30px" }
     const navigate=useNavigate()
+    const handleResize = () => {
+      if (window.innerWidth < 720) {
+          setIsMobile(true)
+      } else {
+          setIsMobile(false)
+      }
+    }
+    
+    // create an event listener
+    useEffect(() => {
+      window.addEventListener("resize", handleResize)
+    })
     
     const navigateTo = (path) => {
       navigate(path);
@@ -16,13 +32,26 @@ const Navbar=()=>{
       
 
     return(
-        <MainWrap>
-        <Links onClick={() => navigateTo("/")} active={activeLink === "/"}>home</Links>
-        <Links onClick={() => navigateTo("/aboutme")} active={activeLink === "/aboutme"} >about me</Links>
-        <Links onClick={() => navigateTo("/skills")} active={activeLink === "/skills"}>skills</Links>
-        <Links onClick={() => navigateTo("/projects")} active={activeLink === "/projects"}>projects</Links>
-        <Links onClick={() => navigateTo("/contact")} active={activeLink === "/contact"}>contact</Links>
-        </MainWrap>
+      !isMobile
+        ? <MainWrap screen={isMobile}>
+            <Links onClick={() => navigateTo("/")} active={activeLink === "/"}>home</Links>
+            <Links onClick={() => navigateTo("/aboutme")} active={activeLink === "/aboutme"} >about me</Links>
+            <Links onClick={() => navigateTo("/skills")} active={activeLink === "/skills"}>skills</Links>
+            <Links onClick={() => navigateTo("/projects")} active={activeLink === "/projects"}>projects</Links>
+            <Links onClick={() => navigateTo("/contact")} active={activeLink === "/contact"}>contact</Links>
+          </MainWrap>
+        : <MainWrap>
+            <GiHamburgerMenu onClick={()=>setHambOpen(!hambOpen)}style={style}/>
+             {hambOpen
+             ?<NavbarMobile>
+                <Links onClick={() => navigateTo("/")} active={activeLink === "/"}>home</Links>
+                <Links onClick={() => navigateTo("/aboutme")} active={activeLink === "/aboutme"} >about me</Links>
+                <Links onClick={() => navigateTo("/skills")} active={activeLink === "/skills"}>skills</Links>
+                <Links onClick={() => navigateTo("/projects")} active={activeLink === "/projects"}>projects</Links>
+                <Links onClick={() => navigateTo("/contact")} active={activeLink === "/contact"}>contact</Links>
+             </NavbarMobile>
+             :<></>}
+          </MainWrap>
     )
 }
 
@@ -33,6 +62,7 @@ const MainWrap=styled.div`
    height:5vw;
    position:absolute;
    display:flex;
+   flex-direction:${(props) => (props.screen ? "column" : "row")};
    justify-content:flex-end;
    align-items:center;
    top:0;
@@ -80,3 +110,19 @@ const Links = styled.div`
         padding-right:10px;
     }  
 `
+
+//Mobile
+
+  const NavbarMobile=styled.div`
+    width:100%;
+    height:50vw;
+    padding:20px 0;
+    background:black;
+    position:absolute;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-between;
+    z-index:1;
+    top:17vw;
+  `

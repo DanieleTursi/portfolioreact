@@ -3,7 +3,8 @@ import styled from "styled-components"
 import { useNavigate } from "react-router-dom";
 
 const Home=()=>{
-  const PLinks=['<ul>','</ul>']
+  const PLinks=['<li>','</li>']
+  const OpenCloseTags=['<ul>','</ul>']
   const navigate=useNavigate()
   const navigateTo = (path) => {
     navigate(path);
@@ -11,10 +12,12 @@ const Home=()=>{
     return(
       <MainWrap>
        <WrapLinks>
-        <Links onClick={() => navigateTo("/aboutme")}> {PLinks[0]} <a>ABOUT ME</a> {PLinks[1]}</Links>
-        <Links onClick={() => navigateTo("/skills")}> {PLinks[0]} <a>SKILLS</a> {PLinks[1]}</Links>
-        <Links onClick={() => navigateTo("/projects")}> {PLinks[0]} <a>PROJECTS</a> {PLinks[1]}</Links>
-        <Links onClick={() => navigateTo("/contact")}> {PLinks[0]} <a>CONTACT</a> {PLinks[1]}</Links>
+        <OpenClose>{OpenCloseTags[0]}</OpenClose>
+          <Links onClick={() => navigateTo("/aboutme")}> {PLinks[0]} <a>ABOUT ME</a> {PLinks[1]}</Links>
+          <Links onClick={() => navigateTo("/skills")}> {PLinks[0]} <a>SKILLS</a> {PLinks[1]}</Links>
+          <Links onClick={() => navigateTo("/projects")}> {PLinks[0]} <a>PROJECTS</a> {PLinks[1]}</Links>
+          <Links onClick={() => navigateTo("/contact")}> {PLinks[0]} <a>CONTACT</a> {PLinks[1]}</Links>
+        <OpenClose>{OpenCloseTags[1]}</OpenClose>
         </WrapLinks>
         {/* <LinksText>Const Portfolio = styled.div`</LinksText>
         <LinksText2>  color : white;</LinksText2>
@@ -45,8 +48,7 @@ const WrapLinks=styled.div`
 const Links = styled.div`
      font-size:1.5vw;
      color:white;
-     
-
+    
      a{
      cursor:pointer;
      font-weight:bold;
@@ -74,26 +76,15 @@ const Links = styled.div`
     }  
 `
 
-const LinksText=styled.div`
-   color:white;
-   font-size:3vw;
-   text-align:start;
-   padding:30px 30px 0 400px;
-   
-   a{
-     cursor:pointer;
-     font-weight:bold;
+const OpenClose = styled.div`
+     font-size:1.5vw;
+     color:white;
+     align-self:flex-start;
+     margin-left:35vw;
 
-     &:hover{
-      text-shadow:0 0 10px white;
-     }
-   }
-`
-const LinksText2=styled.div`
-   color:white;
-   font-size:2rem;
-   text-align:start;
-   padding:10px 30px 0 450px;
-   font-family: Monaco;
+     @media screen and (max-width: 768px){
+      font-size:4vw;
+      margin-left:10vw;
+    }  
 `
 
