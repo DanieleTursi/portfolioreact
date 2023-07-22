@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components"
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar.js/Navbar";
-import {BiLogoHtml5, BiLogoCss3, BiLogoJavascript,BiLogoReact,BiLogoGithub} from 'react-icons/bi';
+import {BiLogoHtml5, BiLogoCss3, BiLogoJavascript,BiLogoReact,BiLogoGithub,BiLogoMongodb} from 'react-icons/bi';
+import {BsFiletypeSql} from 'react-icons/bs';
 
 const Skills =()=>{
    const style = { color: "white", fontSize: "80px" }
@@ -31,6 +32,14 @@ const Skills =()=>{
           <LogoWrap>
             <BiLogoGithub style={style}/>
             <h2>GitHub</h2>
+          </LogoWrap>
+          <LogoWrap>
+            <BsFiletypeSql style={style}/>
+            <h2>SQL</h2>
+          </LogoWrap>
+          <LogoWrap>
+            <BiLogoMongodb style={style}/>
+            <h2>MongoDB</h2>
           </LogoWrap>
         </SkillsWrap>
      </MainWrap>
