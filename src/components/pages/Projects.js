@@ -41,8 +41,8 @@ const Projects =()=>{
          <Project key={idx} onClick={() => openInNewTab(proj.link)}  onMouseOver={() => handleMouseOver(idx)} 
             onMouseOut={handleMouseOut}>
            <img src={proj.img} alt={proj.alt}/>
-           {hoveredIndex  === idx && <><ProjName hover={hoveredIndex === idx}>{proj.name}</ProjName>
-           <Code hover={hoveredIndex === idx}>{proj.lang}</Code></>}
+           {hoveredIndex  === idx && <InfoWrap hover={hoveredIndex === idx}><ProjName>{proj.name}</ProjName>
+           <Code >{proj.lang}</Code></InfoWrap>}
          </Project>))}
          {/* <Project>
            <img src={helpmechoose} alt="mycinema project"/>
@@ -91,6 +91,10 @@ const Project=styled.div`
   align-items:center;
   width:40%;
 
+  @media screen and (max-width: 768px){
+      height:200px;
+     }
+
   img{
    position:absolute;
    top:0;
@@ -106,15 +110,22 @@ const Project=styled.div`
   }
 `
 
-const ProjName=styled.h1`
-   top:200px;
+const InfoWrap=styled.div`
    display:${(props) => (props.hover? "inline-block" : "none")};
+   position:absolute;
+   top:200px;
+
+   @media screen and (max-width: 768px){
+       top:130px;
+     }
+`
+
+const ProjName=styled.h1`
    font-size:20px;
    margin: 20px 0 5px 0;
 `
 
 const Code=styled.h2`
-   display:${(props) => (props.hover ? "inline-block" : "none")};
    font-size:14px;
    margin: 5px 0 20px 0;
 `
