@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import styled from "styled-components"
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar.js/Navbar";
@@ -9,6 +9,17 @@ import tribute from "../../assets/images/tribute.png";
 
 const Projects =()=>{
     const navigate=useNavigate();
+    const [hoveredIndex, setHoveredIndex] = useState(-1);
+
+    const handleMouseOver = (index) => {
+      setHoveredIndex(index);
+      console.log(hoveredIndex)
+    };
+  
+    const handleMouseOut = () => {
+      setHoveredIndex(-1);
+      console.log(hoveredIndex)
+    };
     const openInNewTab = (url) => {
       window.open(url, "_blank", "noreferrer");
     };
@@ -17,16 +28,21 @@ const Projects =()=>{
       {link:"https://help-me-choose.vercel.app",img:helpmechoose,alt:"helpmechoose proj",name:"HelpMeChoose", lang:"HTML,CSS,JavaScript"},
       {link:"https://replit.com/@DanieleTursi/FilmApp?embed=true",img:filmapp,alt:"FilmApp proj",name:"FilmApp", lang:"Python,MySql"},
       {link:"https://williamkamkwamba.vercel.app",img:tribute,alt:"WilliamKamkwamba proj",name:"William Kamkwamba", lang:"HTML,CSS"}]
+    
 
+      useEffect(() => {
+      
+      }, [hoveredIndex]);
     return(
      <MainWrap>
         <Navbar/>
         <ProjectsWrap>
         {Projects.map((proj,idx)=>(
-         <Project key={idx} onClick={() => openInNewTab(proj.link)}>
+         <Project key={idx} onClick={() => openInNewTab(proj.link)}  onMouseOver={() => handleMouseOver(idx)} 
+            onMouseOut={handleMouseOut}>
            <img src={proj.img} alt={proj.alt}/>
-           <ProjName>{proj.name}</ProjName>
-           <Code>{proj.lang}</Code>
+           {hoveredIndex  === idx && <><ProjName hover={hoveredIndex === idx}>{proj.name}</ProjName>
+           <Code hover={hoveredIndex === idx}>{proj.lang}</Code></>}
          </Project>))}
          {/* <Project>
            <img src={helpmechoose} alt="mycinema project"/>
@@ -67,6 +83,8 @@ const ProjectsWrap=styled.div`
 `
 
 const Project=styled.div`
+  position:relative;
+  height:300px;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -74,6 +92,8 @@ const Project=styled.div`
   width:40%;
 
   img{
+   position:absolute;
+   top:0;
    width:300px;
    height:180px;
    border-radius:8px;
@@ -87,11 +107,14 @@ const Project=styled.div`
 `
 
 const ProjName=styled.h1`
+   top:200px;
+   display:${(props) => (props.hover? "inline-block" : "none")};
    font-size:20px;
    margin: 20px 0 5px 0;
 `
 
 const Code=styled.h2`
+   display:${(props) => (props.hover ? "inline-block" : "none")};
    font-size:14px;
    margin: 5px 0 20px 0;
 `
