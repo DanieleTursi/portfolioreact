@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar.js/Navbar";
 import {BiLogoHtml5, BiLogoCss3, BiLogoJavascript,BiLogoReact,BiLogoGithub,BiLogoMongodb} from 'react-icons/bi';
-import {BsFiletypeSql} from 'react-icons/bs';
+import {GrMysql} from 'react-icons/gr';
 
 const Skills =()=>{
    const style = { color: "white", fontSize: "80px" }
@@ -34,8 +34,8 @@ const Skills =()=>{
             <h2>GitHub</h2>
           </LogoWrap>
           <LogoWrap>
-            <BsFiletypeSql style={style}/>
-            <h2>SQL</h2>
+            <GrMysql style={style}/>
+            <h2>MySQL</h2>
           </LogoWrap>
           <LogoWrap>
             <BiLogoMongodb style={style}/>

@@ -6,19 +6,19 @@ import mycinema from "../../assets/images/mycinema.png";
 import helpmechoose from "../../assets/images/helpmechoose.png";
 import filmapp from "../../assets/images/FilmApp.png";
 import tribute from "../../assets/images/tribute.png";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const Projects =()=>{
+  const [isMobile, setIsMobile] = useLocalStorage("isMobile");
     const navigate=useNavigate();
     const [hoveredIndex, setHoveredIndex] = useState(-1);
 
     const handleMouseOver = (index) => {
       setHoveredIndex(index);
-      console.log(hoveredIndex)
     };
   
     const handleMouseOut = () => {
       setHoveredIndex(-1);
-      console.log(hoveredIndex)
     };
     const openInNewTab = (url) => {
       window.open(url, "_blank", "noreferrer");
@@ -41,6 +41,8 @@ const Projects =()=>{
          <Project key={idx} onClick={() => openInNewTab(proj.link)}  onMouseOver={() => handleMouseOver(idx)} 
             onMouseOut={handleMouseOut}>
            <img src={proj.img} alt={proj.alt}/>
+           {/* {isMobile && <MobileWrap hover={hoveredIndex === idx}><ProjName>{proj.name}</ProjName>
+           <Code >{proj.lang}</Code></MobileWrap>} */}
            {hoveredIndex  === idx && <InfoWrap hover={hoveredIndex === idx}><ProjName>{proj.name}</ProjName>
            <Code >{proj.lang}</Code></InfoWrap>}
          </Project>))}
@@ -78,8 +80,11 @@ const ProjectsWrap=styled.div`
   flex-wrap:wrap;
 
   @media screen and (max-width: 768px){
+       margin-top:14vw;
+       width:100%;
        flex-direction:column;
      }
+  
 `
 
 const Project=styled.div`
@@ -92,7 +97,7 @@ const Project=styled.div`
   width:40%;
 
   @media screen and (max-width: 768px){
-      height:200px;
+      height:180px;
      }
 
   img{
@@ -105,7 +110,7 @@ const Project=styled.div`
 
    @media screen and (max-width: 768px){
        width:200px;
-       height:120px;
+       height:110px;
      }
   }
 `
@@ -116,16 +121,31 @@ const InfoWrap=styled.div`
    top:200px;
 
    @media screen and (max-width: 768px){
-       top:130px;
+       top:180px;
      }
+`
+
+const MobileWrap=styled.div`
+   display:inline-block;
+   position:absolute;
+   top:115px;
 `
 
 const ProjName=styled.h1`
    font-size:20px;
    margin: 20px 0 5px 0;
+
+   @media screen and (max-width: 768px){
+       font-size:14px;
+     }
 `
 
 const Code=styled.h2`
    font-size:14px;
    margin: 5px 0 20px 0;
+
+   @media screen and (max-width: 768px){
+       font-size:10px;
+       margin: 5px 0 10px 0;
+     }
 `

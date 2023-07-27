@@ -3,9 +3,10 @@ import styled, { keyframes } from "styled-components"
 import { useNavigate } from "react-router-dom";
 import { RxHamburgerMenu } from 'react-icons/rx';
 import {IoMdClose} from 'react-icons/io';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 const Navbar=()=>{
-    const [isMobile, setIsMobile] = useState(false)
+    const [isMobile, setIsMobile] = useLocalStorage("isMobile",false);
     const [hambOpen,setHambOpen]=useState(false)
     const [activeLink, setActiveLink] = useState("");
     const style = { color: "white", marginRight: "15px", fontSize: "30px" }
