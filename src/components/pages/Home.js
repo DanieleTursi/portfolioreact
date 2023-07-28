@@ -12,17 +12,13 @@ const Home=()=>{
     return(
       <MainWrap>
        <WrapLinks>
-        <OpenClose>{OpenCloseTags[0]}</OpenClose>
-          <Links onClick={() => navigateTo("/aboutme")}> {PLinks[0]} <a>ABOUT ME</a> {PLinks[1]}</Links>
-          <Links onClick={() => navigateTo("/skills")}> {PLinks[0]} <a>SKILLS</a> {PLinks[1]}</Links>
-          <Links onClick={() => navigateTo("/projects")}> {PLinks[0]} <a>PROJECTS</a> {PLinks[1]}</Links>
-          <Links onClick={() => navigateTo("/contact")}> {PLinks[0]} <a>CONTACT</a> {PLinks[1]}</Links>
-        <OpenClose>{OpenCloseTags[1]}</OpenClose>
-        </WrapLinks>
-        {/* <LinksText>Const Portfolio = styled.div`</LinksText>
-        <LinksText2>  color : white;</LinksText2>
-        <LinksText2>  font-size : 3rem;</LinksText2>
-        <LinksText2>`</LinksText2> */}
+          <OpenClose>{OpenCloseTags[0]}</OpenClose>
+            <Links onClick={() => navigateTo("/aboutme")}> {PLinks[0]} <a>ABOUT ME</a> {PLinks[1]}</Links>
+            <Links onClick={() => navigateTo("/skills")}> {PLinks[0]} <a>SKILLS</a> {PLinks[1]}</Links>
+            <Links onClick={() => navigateTo("/projects")}> {PLinks[0]} <a>PROJECTS</a> {PLinks[1]}</Links>
+            <Links onClick={() => navigateTo("/contact")}> {PLinks[0]} <a>CONTACT</a> {PLinks[1]}</Links>
+          <OpenClose>{OpenCloseTags[1]}</OpenClose>
+       </WrapLinks>
       </MainWrap>
     )
 }
@@ -41,13 +37,15 @@ const MainWrap=styled.div`
 
 const WrapLinks=styled.div`
    display:flex;
-   flex-direction: column;
+   flex-direction:column;
    justify-content:center;
+   align-items:flex-start;
 `
 
 const Links = styled.div`
      font-size:1.5vw;
      color:white;
+     margin-left:38vw;
     
      a{
      cursor:pointer;
@@ -63,7 +61,7 @@ const Links = styled.div`
 
      @media screen and (max-width: 768px){
       font-size:4vw;
-
+      margin-left:15vw;
       a{
      cursor:pointer;
      font-weight:bold;

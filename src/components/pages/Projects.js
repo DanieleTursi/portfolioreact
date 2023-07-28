@@ -81,7 +81,7 @@ const ProjectsWrap=styled.div`
 
 const Project=styled.div`
   position:relative;
-  height:300px;
+  height:20vw;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -101,8 +101,8 @@ const Project=styled.div`
   img{
    position:absolute;
    top:0;
-   width:300px;
-   height:180px;
+   width:55%;
+   height:60%;
    border-radius:8px;
    margin-top:20px;
 
@@ -116,7 +116,7 @@ const Project=styled.div`
 const InfoWrap=styled.div`
    display:${(props) => (props.hover ? "inline-block" : "none")};
    position:absolute;
-   top:200px;
+   top:65%;
 
    @media screen and (max-width: 768px){
        top:180px;
