@@ -40,11 +40,14 @@ const Projects =()=>{
         {Projects.map((proj,idx)=>(
          <Project key={idx} onClick={() => openInNewTab(proj.link)}  onMouseOver={() => handleMouseOver(idx)} 
             onMouseOut={handleMouseOut}>
-           <img src={proj.img} alt={proj.alt}/>
-           {isMobile && <MobileWrap hover={hoveredIndex === idx}><ProjName>{proj.name}</ProjName>
-           <Code >{proj.lang}</Code></MobileWrap>}
-           {hoveredIndex  === idx && <InfoWrap hover={hoveredIndex === idx}><ProjName>{proj.name}</ProjName>
-           <Code >{proj.lang}</Code></InfoWrap>}
+            { !isMobile
+            ? <><img src={proj.img} alt={proj.alt}/>
+            {hoveredIndex  === idx && <InfoWrap hover={hoveredIndex === idx}><ProjName>{proj.name}</ProjName>
+           <Code >{proj.lang}</Code></InfoWrap>}</>
+           : <MobileWrap><ProjName>{proj.name}</ProjName>
+           <Code >{proj.lang}</Code></MobileWrap>
+           }
+           
          </Project>))}
         </ProjectsWrap>
      </MainWrap>
@@ -94,9 +97,9 @@ const Project=styled.div`
        }
   
 
-  @media screen and (max-width: 768px){
+  ${'' /* @media screen and (max-width: 768px){
       height:180px;
-     }
+     } */}
 
   img{
    position:absolute;
@@ -126,9 +129,6 @@ const InfoWrap=styled.div`
 const MobileWrap=styled.div`
    display:inline-block;
    position:absolute;
-   top:115px;
-
-
 `
 
 const ProjName=styled.h1`

@@ -32,14 +32,15 @@ const MainWrap=styled.div`
    justify-content:center;
    align-items:center;
    span{
+        text-align:left;
         font-size:1.9vw;
-        padding:0 30px;
+        padding:0 50px;
      }
 
      @media screen and (max-width: 768px){
         span{
         font-size:4vw;
-        padding:0 10px;
+        padding:0 30px;
      }
     }  
 `

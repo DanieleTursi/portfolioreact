@@ -97,7 +97,7 @@ const Links = styled.div`
      padding-right:40px;
      cursor:pointer;
      font-weight:bold;
-     transition: text-shadow 0.5s,color 0.5,s text-transform 0.5s;
+     transition: text-shadow 0.5s, color 0.5s, text-transform 0.5s;
     
 
      &:hover{
@@ -106,14 +106,10 @@ const Links = styled.div`
         color:red;
      }
 
-     &.active {
-    text-transform: uppercase;
-    color: red;
-  }
-
      @media screen and (max-width: 768px){
         font-size:4vw;
         padding-right:10px;
+        margin-top:30px;
     }  
 `
 
@@ -121,14 +117,14 @@ const Links = styled.div`
 
   const NavbarMobile=styled.div`
     width:100%;
-    height:50vw;
+    height:100vh;
     padding:20px 0;
     background:black;
     position:absolute;
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:space-between;
+    justify-content:flex-start;
     z-index:1;
     top:17vw;
   `
