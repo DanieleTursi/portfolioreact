@@ -35,7 +35,6 @@ const Projects =()=>{
       }, [hoveredIndex]);
     return(
      <MainWrap>
-        <Navbar/>
         <ProjectsWrap>
         {Projects.map((proj,idx)=>(
          <Project key={idx} onClick={() => openInNewTab(proj.link)}  onMouseOver={() => handleMouseOver(idx)} 

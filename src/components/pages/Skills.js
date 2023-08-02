@@ -11,7 +11,6 @@ const Skills =()=>{
 
     return(
      <MainWrap>
-     <Navbar/>
         <SkillsWrap>
           <LogoWrap>
             <BiLogoHtml5 style={style}/>

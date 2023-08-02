@@ -9,6 +9,8 @@ const Navbar=()=>{
     const [isMobile, setIsMobile] = useLocalStorage("isMobile",false);
     const [hambOpen,setHambOpen]=useState(false)
     const [activeLink, setActiveLink] = useState("");
+    const PLinks=['<li>','</li>']
+    const OpenCloseTags=['<ul>','</ul>']
     const style = { color: "white", marginRight: "15px", fontSize: "30px" }
     const navigate=useNavigate()
 
@@ -31,18 +33,37 @@ const Navbar=()=>{
   
     useEffect(() => {
       handleResize();
-      setActiveLink(window.location.pathname);
     }, []);
+
+    const handleClick=(link)=>{
+      console.log(link,"working")
+      navigateTo(link);
+      setActiveLink(link);   
+    }
+
+    if (window.location.pathname === "/"){
+    return(
+      <MainWrapHome>
+       <WrapLinks>
+          <OpenClose>{OpenCloseTags[0]}</OpenClose>
+            <LinksHome onClick={() => handleClick("/aboutme")}> {PLinks[0]} <a>ABOUT ME</a> {PLinks[1]}</LinksHome>
+            <LinksHome onClick={() => handleClick("/skills")}> {PLinks[0]} <a>SKILLS</a> {PLinks[1]}</LinksHome>
+            <LinksHome onClick={() => handleClick("/projects")}> {PLinks[0]} <a>PROJECTS</a> {PLinks[1]}</LinksHome>
+            <LinksHome onClick={() => handleClick("/contact")}> {PLinks[0]} <a>CONTACT</a> {PLinks[1]}</LinksHome>
+          <OpenClose>{OpenCloseTags[1]}</OpenClose>
+       </WrapLinks>
+      </MainWrapHome>
+    )}
       
 
-    return(
+  return(
       !isMobile
         ? <MainWrap screen={isMobile}>
-            <Links onClick={() => navigateTo("/")} active={activeLink === "/"}>home</Links>
-            <Links onClick={() => navigateTo("/aboutme")} active={activeLink === "/aboutme"} >about me</Links>
-            <Links onClick={() => navigateTo("/skills")} active={activeLink === "/skills"}>skills</Links>
-            <Links onClick={() => navigateTo("/projects")} active={activeLink === "/projects"}>projects</Links>
-            <Links onClick={() => navigateTo("/contact")} active={activeLink === "/contact"}>contact</Links>
+            <Links onClick={() => handleClick("/")} active={activeLink === "/"}>home</Links>
+            <Links onClick={() => handleClick("/aboutme")} active={activeLink === "/aboutme"} >about me</Links>
+            <Links onClick={() => handleClick("/skills")} active={activeLink === "/skills"}>skills</Links>
+            <Links onClick={() => handleClick("/projects")} active={activeLink === "/projects"}>projects</Links>
+            <Links onClick={() => handleClick("/contact")} active={activeLink === "/contact"}>contact</Links>
           </MainWrap>
         : <MainWrap>
            { !hambOpen
@@ -128,3 +149,65 @@ const Links = styled.div`
     z-index:1;
     top:17vw;
   `
+
+
+  const MainWrapHome=styled.div`
+   width:100vw;
+   height:100vh;
+   background:black;
+   font-family: Monaco;
+   display:flex;
+   flex-direction: column;
+   justify-content:center;
+`
+
+const WrapLinks=styled.div`
+   display:flex;
+   flex-direction:column;
+   justify-content:center;
+   align-items:flex-start;
+`
+
+const LinksHome = styled.div`
+     font-size:1.5vw;
+     color:white;
+     margin-left:38vw;
+    
+     a{
+     cursor:pointer;
+     font-weight:bold;
+     font-size:3vw;
+     transition: text-shadow 0.5s,color 0.5s;
+
+     &:hover{
+      text-shadow:0 0 10px white;
+      color:red;
+     }
+     }
+
+     @media screen and (max-width: 768px){
+      font-size:4vw;
+      margin-left:15vw;
+      a{
+     cursor:pointer;
+     font-weight:bold;
+     font-size:8vw;
+
+     &:hover{
+      text-shadow:0 0 10px white;
+     }
+      }
+    }  
+`
+
+const OpenClose = styled.div`
+     font-size:1.5vw;
+     color:white;
+     align-self:flex-start;
+     margin-left:35vw;
+
+     @media screen and (max-width: 768px){
+      font-size:4vw;
+      margin-left:10vw;
+    }  
+`

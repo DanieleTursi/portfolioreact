@@ -14,7 +14,6 @@ const Contact =()=>{
 
     return(
      <MainWrap>
-        <Navbar/>
         <h1>CONTACT</h1>
         <Footer>
            <Copyright> DANIELE TURSI.{new Date().getFullYear()} <BiCopyright style={style}/></Copyright>

@@ -9,7 +9,6 @@ const Aboutme =()=>{
 
     return(
      <MainWrap>
-     <Navbar/>
      <Wrap>
         <Link>{par[0]}</Link><span>    Technology and programming have always been my passion, energizing me with their challenges. I thrive both in team and independent settings, as I believe that a combination of collaboration and autonomy leads to the best outcomes. I enjoy learning from my colleagues and sharing my own knowledge with them, as I believe that knowledge-sharing is key to success.
     <br/> My curiosity drives me to constantly explore and expand my understanding of technology and programming, and I take great pleasure in the learning process.</span><LinkTwo>{par[1]}</LinkTwo>
