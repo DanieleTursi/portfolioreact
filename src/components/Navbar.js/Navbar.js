@@ -38,7 +38,8 @@ const Navbar=()=>{
     const handleClick=(link)=>{
       console.log(link,"working")
       navigateTo(link);
-      setActiveLink(link);   
+      setActiveLink(link);
+      setHambOpen(!hambOpen)   
     }
 
     if (window.location.pathname === "/"){
@@ -71,11 +72,11 @@ const Navbar=()=>{
             : <IoMdClose onClick={()=>setHambOpen(!hambOpen)} style={style}/>}
              {hambOpen
              ?<NavbarMobile>
-                <Links onClick={() => navigateTo("/")} active={activeLink === "/"}>home</Links>
-                <Links onClick={() => navigateTo("/aboutme")} active={activeLink === "/aboutme"} >about me</Links>
-                <Links onClick={() => navigateTo("/skills")} active={activeLink === "/skills"}>skills</Links>
-                <Links onClick={() => navigateTo("/projects")} active={activeLink === "/projects"}>projects</Links>
-                <Links onClick={() => navigateTo("/contact")} active={activeLink === "/contact"}>contact</Links>
+                <Links onClick={() => handleClick("/")} active={activeLink === "/"}>home</Links>
+                <Links onClick={() => handleClick("/aboutme")} active={activeLink === "/aboutme"} >about me</Links>
+                <Links onClick={() => handleClick("/skills")} active={activeLink === "/skills"}>skills</Links>
+                <Links onClick={() => handleClick("/projects")} active={activeLink === "/projects"}>projects</Links>
+                <Links onClick={() => handleClick("/contact")} active={activeLink === "/contact"}>contact</Links>
              </NavbarMobile>
              :<></>}
           </MainWrap>
