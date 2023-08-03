@@ -1,27 +1,80 @@
-import React from "react";
+import React,{useState,useRef} from "react";
 import styled from "styled-components"
-import { useNavigate } from "react-router-dom";
-import Navbar from "../Navbar.js/Navbar";
-import { BiCopyright,BiLogoGithub,BiLogoLinkedinSquare} from "react-icons/bi";
 
 const Contact =()=>{
-    const navigate=useNavigate();
-    const style = { color: "white", fontSize: "20px" }
-    const styleLogo = { color: "white", fontSize: "40px", cursor:"pointer", marginRight:"10px"}
-    const openInNewTab = (url) => {
-      window.open(url, "_blank", "noreferrer");
+    const [name,setName]=useState()
+    const [email,setEmail]=useState()
+    const [message,setMessage]=useState()
+    const inputRef = useRef(null);
+
+    const handleName = (event) => {
+      setName(event.target.value);
     };
+    
+    const handleEmail = (event) => {
+      setEmail(event.target.value);
+    }; 
+
+    const handleMessage = (event) => {
+      setMessage(event.target.value);
+    }; 
+
+    const handleReset=()=>{
+      setName("")
+      setEmail("")
+      setMessage("")
+    }
 
     return(
      <MainWrap>
-        <h1>CONTACT</h1>
-        <Footer>
-           <Copyright> DANIELE TURSI.{new Date().getFullYear()} <BiCopyright style={style}/></Copyright>
-           <LogoWrap>
-             <BiLogoLinkedinSquare onClick={() => openInNewTab("https://www.linkedin.com/in/daniele-tursi-78688372/")} style={styleLogo}/>
-             <BiLogoGithub onClick={() => openInNewTab("https://github.com/DanieleTursi")} style={styleLogo}/>
-           </LogoWrap>
-        </Footer>
+        <FormWrap>
+            <Label>Name</Label>
+            <Name
+                  type="string"
+                  id="name"
+                  name="name"
+                  onChange={handleName}
+                  value={name}
+                  placeholder="e.g. David Smith"
+                  ref={inputRef}
+            />
+            <Label>Email</Label>
+            <Name
+                  type="string"
+                  id="email"
+                  name="email"
+                  onChange={handleEmail}
+                  value={email}
+                  placeholder="e.g. davidsmith@gmail.com"
+                  ref={inputRef}
+            />
+            <Label>Message</Label>
+            <Message
+                  type="string"
+                  id="message"
+                  name="message"
+                  onChange={handleMessage}
+                  value={message}
+                  placeholder="e.g. Hi Daniele,
+
+                        I came across your portfolio website and I'm really impressed with your work as a software developer. 
+
+                        I'm interested in discussing a potential collaboration or learning more about your experience. Please let me know when you're available for a chat.
+
+                        Looking forward to connecting with you!
+
+                        Best regards,
+                       
+                        David Smith"
+
+                  ref={inputRef}
+            />
+            <SubResWrap>
+               <Submit type="submit"/>
+               <Submit type="reset" onClick={()=>handleReset()}/>
+            </SubResWrap>
+        </FormWrap>
+
      </MainWrap>
 
     )
@@ -37,32 +90,59 @@ const MainWrap=styled.div`
    display:flex;
    flex-direction: column;
    justify-content:center;
-`
-
-const Footer=styled.div`
-   width:100%;
-   height:5vw;
-   position:absolute;
-   bottom:0;
-   border-top:solid 1px white;
-   display:flex;
-   justify-content:space-between;;
    align-items:center;
-  
-   @media screen and (max-width: 768px){
-      height:20vw;
-      flex-direction:column;
-    } 
 `
 
-const LogoWrap=styled.div`
-    width:150px;
+const FormWrap=styled.form`
+   width:30%;
+   display:flex;
+   flex-direction: column;
+   justify-content:center;
+   align-items:center;
 `
 
-const Copyright=styled.div`
-   color:white;
-   margin-left:20px;
-   @media screen and (max-width: 768px){
-      margin-top:10px;
-    } 
+const Label=styled.label`
+   padding:10px 0 5px 0;
+`
+const Name=styled.input`
+    width:100%;
+    padding:10px;
+
+    @media screen and (max-width: 768px){
+       width:300px;
+     }
+`
+
+const Submit=styled.input`
+    width:50%;
+    padding:10px;
+    margin:10px;
+    border-radius:8px;
+    cursor:pointer;
+
+    &:hover{
+      transform:scale(1.05);
+    }
+
+    @media screen and (max-width: 768px){
+       width:300px;
+     }
+`
+
+const Message=styled.textarea`
+   width:100%;
+    min-height:150px;
+    padding:10px;
+
+    @media screen and (max-width: 768px){
+       width:303px;
+       min-height:300px;
+     }
+    
+`
+
+const SubResWrap=styled.div`
+    width:100%;
+    display:flex;
+    
 `

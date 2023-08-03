@@ -5,16 +5,17 @@ import Skills from './components/pages/Skills';
 import Projects from './components/pages/Projects';
 import Contact from './components/pages/Contact';
 import Navbar from './components/Navbar.js/Navbar';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Navbar/>} />
-        <Route path="/aboutme" element={<><Navbar/><Aboutme/></>} />
-        <Route path="/skills" element={<><Navbar/><Skills/></>} />
-        <Route path="/projects" element={<><Navbar/><Projects/></>} />
-        <Route path="/contact" element={<><Navbar/><Contact/></>} />
+        <Route path="/aboutme" element={<><Navbar/><Aboutme/><Footer/></>} />
+        <Route path="/skills" element={<><Navbar/><Skills/><Footer/></>} />
+        <Route path="/projects" element={<><Navbar/><Projects/><Footer/></>} />
+        <Route path="/contact" element={<><Navbar/><Contact/><Footer/></>} />
       </Routes>
    </Router>
   );

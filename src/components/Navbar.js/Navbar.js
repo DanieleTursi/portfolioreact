@@ -25,15 +25,11 @@ const Navbar=()=>{
     // create an event listener
     useEffect(() => {
       window.addEventListener("resize", handleResize)
-    })
+    },[window.innerWidth])
     
     const navigateTo = (path) => {
       navigate(path);
     };
-  
-    useEffect(() => {
-      handleResize();
-    }, []);
 
     const handleClick=(link)=>{
       console.log(link,"working")
