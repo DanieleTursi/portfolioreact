@@ -6,7 +6,7 @@ import {IoMdClose} from 'react-icons/io';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 const Navbar=()=>{
-    const [isMobile, setIsMobile] = useLocalStorage("isMobile",false);
+    const [isMobile, setIsMobile] = useLocalStorage("isMobile",);
     const [hambOpen,setHambOpen]=useState(false)
     const [activeLink, setActiveLink] = useState("");
     const PLinks=['<li>','</li>']
@@ -32,10 +32,10 @@ const Navbar=()=>{
     };
 
     const handleClick=(link)=>{
-      console.log(link,"working")
+      setHambOpen(false) 
       navigateTo(link);
       setActiveLink(link);
-      setHambOpen(!hambOpen)   
+        
     }
 
     if (window.location.pathname === "/"){

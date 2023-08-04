@@ -1,5 +1,6 @@
 import React,{useState,useRef} from "react";
 import styled from "styled-components"
+import emailjs from "emailjs-com";
 
 const Contact =()=>{
     const [name,setName]=useState()
@@ -25,14 +26,27 @@ const Contact =()=>{
       setMessage("")
     }
 
+    const form = useRef();
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_uz38h3i', 'template_wudqq77', form.current, 'qOKNlBU7UjqKgvdq0').then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+        e.target.reset();
+    };
+
     return(
      <MainWrap>
-        <FormWrap>
+        <FormWrap ref={form} onSubmit={sendEmail}>
             <Label>Name</Label>
             <Name
-                  type="string"
+                  required 
+                  type='text' 
+                  name='name'
                   id="name"
-                  name="name"
                   onChange={handleName}
                   value={name}
                   placeholder="e.g. David Smith"
@@ -40,9 +54,10 @@ const Contact =()=>{
             />
             <Label>Email</Label>
             <Name
-                  type="string"
+                  required
+                  type='email' 
+                  name='email'
                   id="email"
-                  name="email"
                   onChange={handleEmail}
                   value={email}
                   placeholder="e.g. davidsmith@gmail.com"
@@ -50,27 +65,28 @@ const Contact =()=>{
             />
             <Label>Message</Label>
             <Message
-                  type="string"
+                  required
+                  type="text"
                   id="message"
                   name="message"
                   onChange={handleMessage}
                   value={message}
-                  placeholder="e.g. Hi Daniele,
+                  // placeholder="e.g. Hi Daniele,
 
-                        I came across your portfolio website and I'm really impressed with your work as a software developer. 
+                  //       I came across your portfolio website and I'm really impressed with your work as a software developer. 
 
-                        I'm interested in discussing a potential collaboration or learning more about your experience. Please let me know when you're available for a chat.
+                  //       I'm interested in discussing a potential collaboration or learning more about your experience. Please let me know when you're available for a chat.
 
-                        Looking forward to connecting with you!
+                  //       Looking forward to connecting with you!
 
-                        Best regards,
+                  //       Best regards,
                        
-                        David Smith"
+                  //       David Smith"
 
                   ref={inputRef}
             />
             <SubResWrap>
-               <Submit type="submit"/>
+               <Submit type="submit" onClick={()=>handleReset()}/>
                <Submit type="reset" onClick={()=>handleReset()}/>
             </SubResWrap>
         </FormWrap>
@@ -94,11 +110,19 @@ const MainWrap=styled.div`
 `
 
 const FormWrap=styled.form`
-   width:30%;
+   width:40%;
    display:flex;
    flex-direction: column;
    justify-content:center;
    align-items:center;
+
+   @media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    width:60%;
+    height:60%;
+}
 `
 
 const Label=styled.label`
@@ -108,13 +132,17 @@ const Name=styled.input`
     width:100%;
     padding:10px;
 
+    @media screen and (min-width: 800px) and (max-width: 900px) {
+         padding:2px;
+      }
+
     @media screen and (max-width: 768px){
        width:300px;
      }
 `
 
 const Submit=styled.input`
-    width:50%;
+    min-width:100px;
     padding:10px;
     margin:10px;
     border-radius:8px;
@@ -124,19 +152,28 @@ const Submit=styled.input`
       transform:scale(1.05);
     }
 
-    @media screen and (max-width: 768px){
-       width:300px;
-     }
+    @media screen and (min-width: 800px) and (max-width: 900px) {
+         padding:2px;
+      }
+
 `
 
 const Message=styled.textarea`
-   width:100%;
-    min-height:150px;
+    width:100%;
+    min-height:40%;
     padding:10px;
+
+    @media screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+         min-width:40%;
+         min-height:40%;
+      }
 
     @media screen and (max-width: 768px){
        width:303px;
-       min-height:300px;
+       min-height:40%;
      }
     
 `
@@ -144,5 +181,5 @@ const Message=styled.textarea`
 const SubResWrap=styled.div`
     width:100%;
     display:flex;
-    
+    justify-content:center;  
 `

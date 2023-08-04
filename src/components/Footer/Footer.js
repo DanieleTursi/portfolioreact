@@ -7,7 +7,7 @@ import { BiCopyright,BiLogoGithub,BiLogoLinkedinSquare} from "react-icons/bi";
 
 const Footer=()=>{
     const navigate=useNavigate();
-const style = { color: "white", fontSize: "20px" }
+const style = { color: "white", fontSize: "20px",marginLeft:"10px"}
 const styleLogo = { color: "white", fontSize: "40px", cursor:"pointer", marginRight:"10px"}
 const openInNewTab = (url) => {
   window.open(url, "_blank", "noreferrer");
@@ -49,8 +49,11 @@ const LogoWrap=styled.div`
 
 const Copyright=styled.div`
    color:white;
+   display:flex;
+   align-items:center;
    margin-left:20px;
+
    @media screen and (max-width: 768px){
-      margin-top:10px;
+      margin-top:15px;
     } 
 `

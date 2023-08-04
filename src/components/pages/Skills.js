@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components"
-import { useNavigate } from "react-router-dom";
-import Navbar from "../Navbar.js/Navbar";
 import {BiLogoHtml5, BiLogoCss3, BiLogoJavascript,BiLogoReact,BiLogoGithub,BiLogoMongodb} from 'react-icons/bi';
 import {GrMysql} from 'react-icons/gr';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 const Skills =()=>{
-   const style = { color: "white", fontSize: "80px" }
-    const navigate=useNavigate();
-
+  const [isMobile, setIsMobile] = useLocalStorage("isMobile",'');
+   const style = { color: "white", fontSize: isMobile ? "40px" : "80px" }
+   console.log(isMobile)
+  
     return(
      <MainWrap>
         <SkillsWrap>

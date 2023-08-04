@@ -64,19 +64,17 @@ const MainWrap=styled.div`
    display:flex;
    flex-direction: column;
    justify-content:center;
+   align-items:center;
 `
 
 const ProjectsWrap=styled.div`
   width:95%;
-  position:absolute;
-  top:7vw;
   display:flex;
   justify-content:center;
   align-items:center;
   flex-wrap:wrap;
 
   @media screen and (max-width: 768px){
-       margin-top:14vw;
        width:100%;
        flex-direction:column;
      }
@@ -116,16 +114,6 @@ const Project=styled.div`
        height:110px;
      }
   }
-`
-
-const InfoWrap=styled.div`
-   display:${(props) => (props.hover ? "inline-block" : "none")};
-   position:absolute;
-   top:65%;
-
-   @media screen and (max-width: 768px){
-       top:180px;
-     }
 `
 
 const MobileWrap=styled.div`
