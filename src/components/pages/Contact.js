@@ -147,9 +147,11 @@ const Submit=styled.input`
     margin:10px;
     border-radius:8px;
     cursor:pointer;
+    background:#ECEAE5;
 
     &:hover{
       transform:scale(1.05);
+      background:#D6D3CD;
     }
 
     @media screen and (min-width: 800px) and (max-width: 900px) {

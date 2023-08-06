@@ -6,11 +6,11 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 
 const Skills =()=>{
   const [isMobile, setIsMobile] = useLocalStorage("isMobile",'');
-   const style = { color: "white", fontSize: isMobile ? "40px" : "80px" }
+   const style = { color: "white", fontSize: isMobile ? "50px" : "80px" }
    console.log(isMobile)
   
     return(
-     <MainWrap>
+     <MainWrap isMobile={isMobile}>
         <SkillsWrap>
           <LogoWrap>
             <BiLogoHtml5 style={style}/>
@@ -56,6 +56,12 @@ const MainWrap=styled.div`
    display:flex;
    flex-direction: column;
    justify-content:center;
+   h2{
+      color:white;
+      font-size:${(props=>props.isMobile ? "16px" :"22px")};
+      ${'' /* text-transform:uppercase; */}
+      margin:0;
+   }
 `
 
 const SkillsWrap=styled.div`
@@ -73,9 +79,4 @@ const LogoWrap=styled.div`
    margin:15px;
    width:150px;
 
-   h2{
-      color:white;
-      ${'' /* text-transform:uppercase; */}
-      margin:0;
-   }
 `

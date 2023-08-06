@@ -11,7 +11,8 @@ import React,{useEffect} from 'react';
 
 
 function App() {
-  const [isMobile, setIsMobile] = useLocalStorage("isMobile",false);
+  const [isMobile, setIsMobile] = useLocalStorage("isMobile",'');
+
   const handleResize = () => {
     if (window.innerWidth < 720) {
         setIsMobile(true)
@@ -21,8 +22,14 @@ function App() {
   }
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize)
-  },[window.innerWidth])
+    handleResize(); 
+    window.addEventListener("resize", handleResize);
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <Router>
       <Routes>

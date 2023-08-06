@@ -6,7 +6,7 @@ import {IoMdClose} from 'react-icons/io';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 const Navbar=()=>{
-    const [isMobile, setIsMobile] = useLocalStorage("isMobile",);
+    const [isMobile, setIsMobile] = useLocalStorage("isMobile",'');
     const [hambOpen,setHambOpen]=useState(false)
     const [activeLink, setActiveLink] = useState("");
     const PLinks=['<li>','</li>']
@@ -15,7 +15,7 @@ const Navbar=()=>{
     const navigate=useNavigate()
 
     const handleResize = () => {
-      if (window.innerWidth < 720) {
+      if (window.innerWidth < 821) {
           setIsMobile(true)
       } else {
           setIsMobile(false)
@@ -25,7 +25,7 @@ const Navbar=()=>{
     // create an event listener
     useEffect(() => {
       window.addEventListener("resize", handleResize)
-    },[window.innerWidth])
+    },[])
     
     const navigateTo = (path) => {
       navigate(path);
@@ -83,7 +83,7 @@ export default Navbar
 
 const MainWrap=styled.div`
    width:100%;
-   height:5vw;
+   height:8%;
    position:absolute;
    display:flex;
    flex-direction:${(props) => (props.screen ? "column" : "row")};
@@ -124,7 +124,7 @@ const Links = styled.div`
         color:red;
      }
 
-     @media screen and (max-width: 768px){
+     @media screen and (max-width: 821px){
         font-size:4vw;
         padding-right:10px;
         margin-top:30px;

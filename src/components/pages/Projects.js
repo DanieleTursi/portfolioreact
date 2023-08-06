@@ -125,7 +125,7 @@ const ProjName=styled.h1`
    font-size:20px;
    margin: 20px 0 5px 0;
 
-   @media screen and (max-width: 768px){
+   @media screen and (max-width: 767px){
        font-size:14px;
      }
 `
@@ -134,7 +134,7 @@ const Code=styled.h2`
    font-size:14px;
    margin: 5px 0 20px 0;
 
-   @media screen and (max-width: 768px){
+   @media screen and (max-width: 767px){
        font-size:10px;
        margin: 5px 0 10px 0;
      }

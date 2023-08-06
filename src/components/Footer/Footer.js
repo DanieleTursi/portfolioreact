@@ -27,20 +27,15 @@ const openInNewTab = (url) => {
 
     export default Footer
 
-    const Wrap=styled.div`
-   width:100%;
-   height:5vw;
-   position:absolute;
-   bottom:0;
-   border-top:solid 1px white;
-   display:flex;
-   justify-content:space-between;;
-   align-items:center;
-  
-   @media screen and (max-width: 768px){
-      height:20vw;
-      flex-direction:column;
-    } 
+const Wrap=styled.div`
+    width:100%;
+    height:8%;
+    position:absolute;
+    bottom:0;
+    border-top:solid 1px white;
+    display:flex;
+    justify-content:space-between;;
+    align-items:center;
 `
 
 const LogoWrap=styled.div`
@@ -54,6 +49,6 @@ const Copyright=styled.div`
    margin-left:20px;
 
    @media screen and (max-width: 768px){
-      margin-top:15px;
+      font-size:14px;
     } 
 `
