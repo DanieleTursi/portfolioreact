@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from "react";
 import styled from "styled-components"
 import { useNavigate } from "react-router-dom";
-import Navbar from "../Navbar.js/Navbar";
 import mycinema from "../../assets/images/mycinema.png";
 import helpmechoose from "../../assets/images/helpmechoose.png";
 import filmapp from "../../assets/images/FilmApp.png";

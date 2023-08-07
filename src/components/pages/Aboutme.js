@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components"
-import { useNavigate } from "react-router-dom";
 
 const Aboutme =()=>{
     const par=['function Aboutme() { alert("','")};']
@@ -28,17 +27,20 @@ const MainWrap=styled.div`
    flex-direction: row;
    justify-content:center;
    align-items:center;
+   
    span{
         text-align:left;
         font-size:1.9vw;
         padding:0 50px;
-     }
 
-     @media screen and (max-width: 768px){
-        span{
-        font-size:4vw;
+        @media screen and (max-width: 768px){
+       
+        font-size:3vw;
         padding:0 30px;
      }
+     }
+
+     
     }  
 `
 

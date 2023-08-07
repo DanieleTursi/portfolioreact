@@ -2,6 +2,7 @@ import React,{useState,useEffect} from "react";
 import styled, { keyframes } from "styled-components"
 import { useNavigate } from "react-router-dom";
 import { RxHamburgerMenu } from 'react-icons/rx';
+import logo from "../../assets/images/logo.png";
 import {IoMdClose} from 'react-icons/io';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
@@ -56,6 +57,7 @@ const Navbar=()=>{
   return(
       !isMobile
         ? <MainWrap screen={isMobile}>
+            <Logo src={logo} alt="logo"/>
             <Links onClick={() => handleClick("/")} active={activeLink === "/"}>home</Links>
             <Links onClick={() => handleClick("/aboutme")} active={activeLink === "/aboutme"} >about me</Links>
             <Links onClick={() => handleClick("/skills")} active={activeLink === "/skills"}>skills</Links>
@@ -64,7 +66,9 @@ const Navbar=()=>{
           </MainWrap>
         : <MainWrap>
            { !hambOpen
-            ? <RxHamburgerMenu onClick={()=>setHambOpen(!hambOpen)} style={style}/>
+            ? <><Logo src={logo} alt="logo"/>
+            <RxHamburgerMenu onClick={()=>setHambOpen(!hambOpen)} style={style}/>
+            </>
             : <IoMdClose onClick={()=>setHambOpen(!hambOpen)} style={style}/>}
              {hambOpen
              ?<NavbarMobile>
@@ -129,6 +133,17 @@ const Links = styled.div`
         padding-right:10px;
         margin-top:30px;
     }  
+`
+
+const Logo=styled.img`
+   position:absolute;
+   left:20px;
+   width: 9%;
+   justify-self:flex-start;
+
+   @media screen and (max-width: 821px){
+      width:20%;;
+    }
 `
 
 //Mobile

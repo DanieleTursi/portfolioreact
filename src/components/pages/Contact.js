@@ -71,17 +71,17 @@ const Contact =()=>{
                   name="message"
                   onChange={handleMessage}
                   value={message}
-                  // placeholder="e.g. Hi Daniele,
+                  placeholder="e.g. Hi Daniele,
 
-                  //       I came across your portfolio website and I'm really impressed with your work as a software developer. 
+                        I came across your portfolio website and I'm really impressed with your work as a software developer. 
 
-                  //       I'm interested in discussing a potential collaboration or learning more about your experience. Please let me know when you're available for a chat.
+                        I'm interested in discussing a potential collaboration or learning more about your experience. Please let me know when you're available for a chat.
 
-                  //       Looking forward to connecting with you!
+                        Looking forward to connecting with you!
 
-                  //       Best regards,
+                        Best regards,
                        
-                  //       David Smith"
+                        David Smith"
 
                   ref={inputRef}
             />
@@ -148,6 +148,7 @@ const Submit=styled.input`
     border-radius:8px;
     cursor:pointer;
     background:#ECEAE5;
+    color:black;
 
     &:hover{
       transform:scale(1.05);
