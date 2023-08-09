@@ -29,13 +29,9 @@ const Navbar=({checkMobile})=>{
       };
   }, [handleWindowResize]);
     
-    const navigateTo = (path) => {
-      navigate(path);
-    };
-
     const handleClick=(link)=>{
       setHambOpen(false) 
-      navigateTo(link);
+      navigate(link);
       setActiveLink(link);
         
     }

@@ -21,7 +21,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Navbar checkMobile={checkMobile}/>} />
-        <Route path="/aboutme" element={<><Navbar checkMobile={checkMobile}/><Aboutme/><Footer/></>} />
+        <Route path="/aboutme" element={<Aboutme/>} />
         <Route path="/skills" element={<><Navbar checkMobile={checkMobile}/><Skills isMobile={mobileCheck}/><Footer/></>} />
         <Route path="/projects" element={<><Navbar checkMobile={checkMobile}/><Projects/><Footer/></>} />
         <Route path="/contact" element={<><Navbar checkMobile={checkMobile}/><Contact/><Footer/></>} />
