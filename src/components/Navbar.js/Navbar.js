@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useCallback} from "react";
 import styled, { keyframes } from "styled-components"
 import { useNavigate } from "react-router-dom";
 import { RxHamburgerMenu } from 'react-icons/rx';
@@ -6,6 +6,7 @@ import logo from "../../assets/images/logo.png";
 import {IoMdClose} from 'react-icons/io';
 
 const Navbar=()=>{
+    const [windowSize, setWindowSize] = useState(window.innerWidth);
     const [isMobile, setIsMobile] = useState(false);
     const [hambOpen,setHambOpen]=useState(false)
     const [activeLink, setActiveLink] = useState("");
@@ -13,19 +14,19 @@ const Navbar=()=>{
     const OpenCloseTags=['<ul>','</ul>']
     const style = { color: "white", marginRight: "15px", fontSize: "30px" }
     const navigate=useNavigate()
-
-    const handleResize = () => {
-      if (window.innerWidth < 821) {
-          setIsMobile(true)
-      } else {
-          setIsMobile(false)
-      }
-    }
     
-    // create an event listener
-    useEffect(() => {
-      window.addEventListener("resize", handleResize)
-    },[])
+  
+    const handleWindowResize = useCallback(event => {
+      console.log(window.innerWidth)
+      setWindowSize(window.innerWidth);
+  }, []);
+  
+  useEffect(() => {
+      window.addEventListener('resize', handleWindowResize);
+      return () => {
+          window.removeEventListener('resize', handleWindowResize);
+      };
+  }, [handleWindowResize]);
     
     const navigateTo = (path) => {
       navigate(path);
@@ -54,7 +55,7 @@ const Navbar=()=>{
       
 
   return(
-      !isMobile
+      windowSize > 830
         ? <MainWrap screen={isMobile}>
             <Logo onClick={() => handleClick("/")} src={logo} alt="logo"/>
             <Links onClick={() => handleClick("/aboutme")} active={activeLink === "/aboutme"} >about me</Links>
@@ -98,21 +99,10 @@ const MainWrap=styled.div`
     }  
 `
 
-const uppercaseAnimation = keyframes`
-  from {
-    text-transform: lowercase;
-  }
-
-  to {
-    text-transform: uppercase;
-  }
-`;
-
 const Links = styled.div`
      font-size:1.5vw;
      color:${(props) => (props.active ? "red" : "white")};
      transition: 2s;
-     text-transform:${(props) => (props.active ? "uppercase" : "lowercase")};
      padding-right:40px;
      cursor:pointer;
      font-weight:bold;
@@ -120,7 +110,6 @@ const Links = styled.div`
     
 
      &:hover{
-        animation: ${uppercaseAnimation} 0.5s forwards;
         text-shadow:0 0 10px white;
         color:red;
      }

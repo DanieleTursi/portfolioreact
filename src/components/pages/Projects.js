@@ -5,10 +5,9 @@ import mycinema from "../../assets/images/mycinema.png";
 import helpmechoose from "../../assets/images/helpmechoose.png";
 import filmapp from "../../assets/images/FilmApp.png";
 import tribute from "../../assets/images/tribute.png";
-import useLocalStorage from "../../hooks/useLocalStorage";
 
 const Projects =()=>{
-  const [isMobile, setIsMobile] = useLocalStorage("isMobile");
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768 ?true :false);
     const navigate=useNavigate();
     const [hoveredIndex, setHoveredIndex] = useState(-1);
 

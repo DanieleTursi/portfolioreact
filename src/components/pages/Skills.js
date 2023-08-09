@@ -1,12 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components"
 import {BiLogoHtml5, BiLogoCss3, BiLogoJavascript,BiLogoReact,BiLogoGithub,BiLogoMongodb} from 'react-icons/bi';
 import {GrMysql} from 'react-icons/gr';
-import useLocalStorage from '../../hooks/useLocalStorage';
+
 
 const Skills =()=>{
-  const [isMobile, setIsMobile] = useLocalStorage("isMobile",'');
-   const style = { color: "white", fontSize: isMobile ? "50px" : "80px" }
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768 ?true :false);
+   const style = { color: "white", fontSize: window.innerWidth < 768 ? "50px" : "80px" }
    console.log(isMobile)
   
     return(
