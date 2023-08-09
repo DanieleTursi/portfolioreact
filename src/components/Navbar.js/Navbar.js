@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { RxHamburgerMenu } from 'react-icons/rx';
 import logo from "../../assets/images/logo.png";
 import {IoMdClose} from 'react-icons/io';
-import useLocalStorage from '../../hooks/useLocalStorage';
 
 const Navbar=()=>{
-    const [isMobile, setIsMobile] = useLocalStorage("isMobile",'');
+    const [isMobile, setIsMobile] = useState(false);
     const [hambOpen,setHambOpen]=useState(false)
     const [activeLink, setActiveLink] = useState("");
     const PLinks=['<li>','</li>']
@@ -57,8 +56,7 @@ const Navbar=()=>{
   return(
       !isMobile
         ? <MainWrap screen={isMobile}>
-            <Logo src={logo} alt="logo"/>
-            <Links onClick={() => handleClick("/")} active={activeLink === "/"}>home</Links>
+            <Logo onClick={() => handleClick("/")} src={logo} alt="logo"/>
             <Links onClick={() => handleClick("/aboutme")} active={activeLink === "/aboutme"} >about me</Links>
             <Links onClick={() => handleClick("/skills")} active={activeLink === "/skills"}>skills</Links>
             <Links onClick={() => handleClick("/projects")} active={activeLink === "/projects"}>projects</Links>
@@ -72,7 +70,6 @@ const Navbar=()=>{
             : <IoMdClose onClick={()=>setHambOpen(!hambOpen)} style={style}/>}
              {hambOpen
              ?<NavbarMobile>
-                <Links onClick={() => handleClick("/")} active={activeLink === "/"}>home</Links>
                 <Links onClick={() => handleClick("/aboutme")} active={activeLink === "/aboutme"} >about me</Links>
                 <Links onClick={() => handleClick("/skills")} active={activeLink === "/skills"}>skills</Links>
                 <Links onClick={() => handleClick("/projects")} active={activeLink === "/projects"}>projects</Links>
