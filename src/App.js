@@ -10,16 +10,21 @@ import React,{useEffect,useState,useCallback} from 'react';
 
 
 function App() {
+  const [mobileCheck,setMobileCheck]=useState(false)
 
+  const checkMobile= (input)=>{
+    setMobileCheck(input)
+    console.log(input)
+  }
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navbar/>} />
-        <Route path="/aboutme" element={<><Navbar/><Aboutme/><Footer/></>} />
-        <Route path="/skills" element={<><Navbar/><Skills/><Footer/></>} />
-        <Route path="/projects" element={<><Navbar/><Projects/><Footer/></>} />
-        <Route path="/contact" element={<><Navbar/><Contact/><Footer/></>} />
+        <Route exact path="/" element={<Navbar checkMobile={checkMobile}/>} />
+        <Route path="/aboutme" element={<><Navbar checkMobile={checkMobile}/><Aboutme/><Footer/></>} />
+        <Route path="/skills" element={<><Navbar checkMobile={checkMobile}/><Skills isMobile={mobileCheck}/><Footer/></>} />
+        <Route path="/projects" element={<><Navbar checkMobile={checkMobile}/><Projects/><Footer/></>} />
+        <Route path="/contact" element={<><Navbar checkMobile={checkMobile}/><Contact/><Footer/></>} />
       </Routes>
    </Router>
   );

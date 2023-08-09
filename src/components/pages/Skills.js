@@ -1,13 +1,12 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import styled from "styled-components"
 import {BiLogoHtml5, BiLogoCss3, BiLogoJavascript,BiLogoReact,BiLogoGithub,BiLogoMongodb} from 'react-icons/bi';
 import {GrMysql} from 'react-icons/gr';
 
 
-const Skills =()=>{
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768 ?true :false);
-   const style = { color: "white", fontSize: window.innerWidth < 768 ? "50px" : "80px" }
-   console.log(isMobile)
+const Skills =({isMobile})=>{
+  
+   const style = { color: "white", fontSize: isMobile ? "50px" : "80px" }
   
     return(
      <MainWrap isMobile={isMobile}>

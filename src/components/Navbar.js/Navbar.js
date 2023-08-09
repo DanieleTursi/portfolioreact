@@ -1,13 +1,13 @@
 import React,{useState,useEffect,useCallback} from "react";
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 import { useNavigate } from "react-router-dom";
 import { RxHamburgerMenu } from 'react-icons/rx';
 import logo from "../../assets/images/logo.png";
 import {IoMdClose} from 'react-icons/io';
 
-const Navbar=()=>{
+const Navbar=({checkMobile})=>{
     const [windowSize, setWindowSize] = useState(window.innerWidth);
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState();
     const [hambOpen,setHambOpen]=useState(false)
     const [activeLink, setActiveLink] = useState("");
     const PLinks=['<li>','</li>']
@@ -17,8 +17,9 @@ const Navbar=()=>{
     
   
     const handleWindowResize = useCallback(event => {
-      console.log(window.innerWidth)
+      setIsMobile(window.innerWidth < 821 ?true :false)
       setWindowSize(window.innerWidth);
+      checkMobile(window.innerWidth < 821 ?true :false)
   }, []);
   
   useEffect(() => {
@@ -54,18 +55,20 @@ const Navbar=()=>{
     )}
       
 
-  return(
-      windowSize > 830
-        ? <MainWrap screen={isMobile}>
+ if (windowSize > 830){
+      
+        return( <MainWrap screen={isMobile}>
             <Logo onClick={() => handleClick("/")} src={logo} alt="logo"/>
             <Links onClick={() => handleClick("/aboutme")} active={activeLink === "/aboutme"} >about me</Links>
             <Links onClick={() => handleClick("/skills")} active={activeLink === "/skills"}>skills</Links>
             <Links onClick={() => handleClick("/projects")} active={activeLink === "/projects"}>projects</Links>
             <Links onClick={() => handleClick("/contact")} active={activeLink === "/contact"}>contact</Links>
-          </MainWrap>
-        : <MainWrap>
+          </MainWrap>)}
+
+        return(
+         <MainWrap>
            { !hambOpen
-            ? <><Logo src={logo} alt="logo"/>
+            ? <><Logo onClick={() => handleClick("/")}   src={logo} alt="logo"/>
             <RxHamburgerMenu onClick={()=>setHambOpen(!hambOpen)} style={style}/>
             </>
             : <IoMdClose onClick={()=>setHambOpen(!hambOpen)} style={style}/>}
@@ -77,8 +80,8 @@ const Navbar=()=>{
                 <Links onClick={() => handleClick("/contact")} active={activeLink === "/contact"}>contact</Links>
              </NavbarMobile>
              :<></>}
-          </MainWrap>
-    )
+          </MainWrap>)
+    
 }
 
 export default Navbar
