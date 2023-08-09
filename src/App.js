@@ -7,7 +7,7 @@ import Contact from './components/pages/Contact';
 import Navbar from './components/Navbar.js/Navbar';
 import Footer from './components/Footer/Footer';
 import useLocalStorage from './hooks/useLocalStorage';
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 
 
 function App() {
