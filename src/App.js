@@ -12,6 +12,7 @@ import React,{useEffect} from 'react';
 
 function App() {
   const [isMobile, setIsMobile] = useLocalStorage("isMobile",'');
+  const [innerWidth,setInnerWidth]=useState('')
 
   const handleResize = () => {
     if (window.innerWidth < 720) {
@@ -24,11 +25,12 @@ function App() {
   useEffect(() => {
     handleResize(); 
     window.addEventListener("resize", handleResize);
+    setInnerWidth(window.innerWidth);
     
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [window.innerWidth != innerWidth]);
 
   return (
     <Router>
