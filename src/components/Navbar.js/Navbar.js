@@ -12,7 +12,7 @@ const Navbar=({checkMobile})=>{
     const [activeLink, setActiveLink] = useState("");
     const PLinks=['<li>','</li>']
     const OpenCloseTags=['<ul>','</ul>']
-    const style = { color: "white", marginRight: "15px", fontSize: "30px" }
+    const style = { color: "white", marginRight: "25px", fontSize: "30px" }
     const navigate=useNavigate()
     
   
@@ -91,7 +91,7 @@ const MainWrap=styled.div`
    justify-content:flex-end;
    align-items:center;
    top:0;
-   border-bottom:solid 2px white;
+   padding:5px;
 
    @media screen and (max-width: 768px){
       height:16vw;

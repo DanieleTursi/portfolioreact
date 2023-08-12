@@ -41,7 +41,7 @@ const Contact =()=>{
     return(
      <MainWrap>
         <FormWrap ref={form} onSubmit={sendEmail}>
-            <Label>Name</Label>
+            <Label>Name*</Label>
             <Name
                   required 
                   type='text' 
@@ -52,7 +52,7 @@ const Contact =()=>{
                   placeholder="e.g. David Smith"
                   ref={inputRef}
             />
-            <Label>Email</Label>
+            <Label>Email*</Label>
             <Name
                   required
                   type='email' 
@@ -63,7 +63,7 @@ const Contact =()=>{
                   placeholder="e.g. davidsmith@gmail.com"
                   ref={inputRef}
             />
-            <Label>Message</Label>
+            <Label>Message*</Label>
             <Message
                   required
                   type="text"
@@ -85,6 +85,7 @@ const Contact =()=>{
 
                   ref={inputRef}
             />
+            <p>*required field</p>
             <SubResWrap>
                <Submit type="submit" onClick={()=>handleReset()}/>
                <Submit type="reset" onClick={()=>handleReset()}/>
@@ -116,6 +117,11 @@ const FormWrap=styled.form`
    justify-content:center;
    align-items:center;
 
+   p{
+    font-size:10px;
+    margin:0;
+   }
+
    @media only screen 
   and (min-device-width: 768px) 
   and (max-device-width: 1024px) 
@@ -127,6 +133,20 @@ const FormWrap=styled.form`
 
 const Label=styled.label`
    padding:10px 0 5px 0;
+
+   @media only screen 
+    and (min-device-width: 768px) 
+    and (max-device-width: 900px) 
+    and (-webkit-min-device-pixel-ratio: 1) {
+       font-size:1rem;
+    }
+
+    @media only screen 
+    and (min-device-width: 768px) 
+    and (max-device-height: 500px) 
+    and (-webkit-min-device-pixel-ratio: 1) {
+       font-size:0.8rem;
+    }
 `
 const Name=styled.input`
     width:100%;

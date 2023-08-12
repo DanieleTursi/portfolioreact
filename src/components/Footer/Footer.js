@@ -14,7 +14,7 @@ const openInNewTab = (url) => {
 };
 
     return(
-        <Wrap>
+      <Wrap>
         <Copyright> DANIELE TURSI.{new Date().getFullYear()} <BiCopyright style={style}/></Copyright>
         <LogoWrap>
           <BiLogoLinkedinSquare onClick={() => openInNewTab("https://www.linkedin.com/in/daniele-tursi-78688372/")} style={styleLogo}/>
@@ -36,6 +36,13 @@ const Wrap=styled.div`
     display:flex;
     justify-content:space-between;;
     align-items:center;
+
+    @media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 900px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    height:11%;
+  }
 `
 
 const LogoWrap=styled.div`
