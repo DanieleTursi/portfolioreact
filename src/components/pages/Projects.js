@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import mycinema from "../../assets/images/mycinema.png";
-import helpmechoose from "../../assets/images/helpmechoose.png";
-import filmapp from "../../assets/images/FilmApp.png";
-import tribute from "../../assets/images/tribute.png";
+import mycinema from "../../assets/images/mycinema.jpg";
+import helpmechoose from "../../assets/images/helpmechoose.jpg";
+import filmapp from "../../assets/images/FilmApp.jpg";
+import gndtdigital from "../../assets/images/gndtdigital.jpg";
 
 const Projects = () => {
   const [isMobile, setIsMobile] = useState(
@@ -40,7 +40,7 @@ const Projects = () => {
     },
     {
       link: "https://gndtdigital.com/home",
-      img: tribute,
+      img: gndtdigital,
       alt: "gndtdigital proj",
       name: "GNDTDIGITAL",
       lang: "React",
