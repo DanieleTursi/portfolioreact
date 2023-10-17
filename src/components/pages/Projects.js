@@ -41,9 +41,9 @@ const Projects = () => {
     {
       link: "https://gndtdigital.com/home",
       img: tribute,
-      alt: "WilliamKamkwamba proj",
-      name: "William Kamkwamba",
-      lang: "HTML,CSS",
+      alt: "gndtdigital proj",
+      name: "GNDTDIGITAL",
+      lang: "React",
     },
     {
       link: "https://replit.com/@DanieleTursi/FilmApp?embed=true",
@@ -154,6 +154,7 @@ const MobileWrap = styled.div`
 const ProjName = styled.h1`
   font-size: 20px;
   margin: 20px 0 5px 0;
+  text-transform: uppercase;
 
   @media screen and (max-width: 767px) {
     font-size: 14px;
